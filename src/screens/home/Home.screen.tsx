@@ -1,12 +1,31 @@
-import React from 'react';
-import {Pressable, ScrollView, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {Pressable, ScrollView, Text, TextInput, View} from 'react-native';
 import {CourseCard, Header, ProgressCard} from '../../components';
 import styles from './home.screen.styles';
 
 export default function HomeScreen() {
+  /** State management */
+  const [search, setSearch] = useState<string>('');
+
+  const handleSearch = () => {
+    setSearch(search);
+  };
+
   return (
     <View style={styles.container}>
       <Header />
+      <View style={styles.searchHeaderMainContainer}>
+        {/* Search Field */}
+        <View style={styles.searchHeaderContainer}>
+          <TextInput
+            placeholder="Search for the course your are looking for..."
+            style={styles.searchText}
+            placeholderTextColor={styles.searchTextPlaceholderTextColor.color}
+            onChangeText={value => setSearch(value)}
+            onSubmitEditing={handleSearch}
+          />
+        </View>
+      </View>
       {/* Ongoing courses */}
       <View style={styles.section}>
         <View style={styles.ongoingCourseContainerHeader}>
