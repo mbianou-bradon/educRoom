@@ -31,6 +31,7 @@ import CourseDetailPage from './src/screens/courseDetail/CourseDetail.page';
 import Profile from './src/screens/profile/Profile';
 import MyCourses from './src/screens/myCourses/MyCourses';
 import Login from './src/screens/auth/login/Login';
+import Splash from './src/screens/splash/Splash';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -40,15 +41,16 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      {/* <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        // backgroundColor={backgroundStyle.backgroundColor}
-        backgroundColor={theme.COLOR.LIGHT_DARK}
-      /> */}
-      {/* <HomeScreen /> */}
-      <Login />
-    </SafeAreaView>
+    // <SafeAreaView style={backgroundStyle}>
+    //   {/* <StatusBar
+    //     barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+    //     // backgroundColor={backgroundStyle.backgroundColor}
+    //     backgroundColor={theme.COLOR.LIGHT_DARK}
+    //   /> */}
+    //   {/* <HomeScreen /> */}
+    //   <Login />
+    // </SafeAreaView>
+    <Splash />
   );
 }
 

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {Button, LoadingScreen, Logo} from '../../../components';
 import {styles} from './login.screen.styles';
+import theme from '../../../utils/theme/theme';
 
 export default function Login() {
   /** State Management */
@@ -62,6 +63,21 @@ export default function Login() {
               </View>
 
               <Button btnText={'Login'} />
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                gap: 5,
+                marginTop: 30,
+                justifyContent: 'center',
+              }}>
+              <Text style={{color: theme.COLOR.LIGHT_GRAY}}>
+                Don't have an account?
+              </Text>
+              <Pressable>
+                <Text style={{color: theme.COLOR.PRIMARY}}>Sign up</Text>
+              </Pressable>
             </View>
 
             <View style={styles.orTextContainer}>

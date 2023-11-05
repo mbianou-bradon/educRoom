@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   loginOptionsContainer: {
-    marginTop: 50,
     gap: 20,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -55,8 +54,7 @@ export const styles = StyleSheet.create({
     color: theme.COLOR.LIGHT_GRAY,
   },
   orTextContainer: {
-    // height: 40,
-    marginTop: 25,
+    marginVertical: 25,
     justifyContent: 'center',
     alignItems: 'center',
   },
