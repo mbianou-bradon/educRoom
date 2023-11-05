@@ -54,4 +54,14 @@ export const styles = StyleSheet.create({
   placeholderTextColor: {
     color: theme.COLOR.LIGHT_GRAY,
   },
+  orTextContainer: {
+    // height: 40,
+    marginTop: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  orText: {
+    fontSize: 30,
+    color: theme.COLOR.LIGHT_GRAY,
+  },
 });

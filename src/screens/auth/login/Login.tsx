@@ -63,6 +63,11 @@ export default function Login() {
 
               <Button btnText={'Login'} />
             </View>
+
+            <View style={styles.orTextContainer}>
+              <Text style={styles.orText}>Or</Text>
+            </View>
+
             <View style={styles.loginOptionsContainer}>
               <TouchableOpacity
                 style={styles.fastLoginOption}
