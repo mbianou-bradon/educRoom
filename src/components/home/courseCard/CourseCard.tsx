@@ -1,7 +1,8 @@
 import {Image, Text, View} from 'react-native';
 import styles from './courseCard.styles';
+import {type CourseModel} from '../../../utils/types/courseModel.type';
 
-export default function CourseCard() {
+export default function CourseCard(props: {props: CourseModel}) {
   const desc =
     'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima, corporis velit! Quo, modi vel ab soluta expedita minima, magnam distinctio atque quaerat nobis, consequatur exercitationem laboriosam dolorem labore sit optio.';
   return (
@@ -18,7 +19,7 @@ export default function CourseCard() {
       </View>
       {/* Course Details container */}
       <View style={styles.courseInfoContainer}>
-        <Text style={styles.courseTitle}>Project Management Essential</Text>
+        <Text style={styles.courseTitle}>Project Management Essential {} </Text>
         <View style={styles.courseInfoSubContainer}>
           <Text style={styles.courseSchedule}>
             Schedule: Tuesdays and Thursdays, 6:00 PM - 8:0PM
