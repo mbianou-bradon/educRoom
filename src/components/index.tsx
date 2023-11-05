@@ -7,6 +7,7 @@ import MenuItem from './profile/menuItem/MenuItem';
 import MyCourseCard from './myCourses/courseCard/MyCourseCard';
 import Status from './general/status/Status';
 import LoadingScreen from './general/loadingScreen/LoadingScreen';
+import Logo from './general/logo/Logo';
 
 export {
   ProgressCard,
@@ -18,4 +19,5 @@ export {
   MyCourseCard,
   Status,
   LoadingScreen,
+  Logo,
 };

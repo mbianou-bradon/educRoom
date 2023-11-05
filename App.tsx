@@ -30,6 +30,7 @@ import theme from './src/utils/theme/theme';
 import CourseDetailPage from './src/screens/courseDetail/CourseDetail.page';
 import Profile from './src/screens/profile/Profile';
 import MyCourses from './src/screens/myCourses/MyCourses';
+import Login from './src/screens/auth/login/Login';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -46,7 +47,7 @@ function App(): JSX.Element {
         backgroundColor={theme.COLOR.LIGHT_DARK}
       /> */}
       {/* <HomeScreen /> */}
-      <HomeScreen />
+      <Login />
     </SafeAreaView>
   );
 }
