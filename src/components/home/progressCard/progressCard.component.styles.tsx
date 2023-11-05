@@ -19,20 +19,11 @@ const styles = StyleSheet.create({
   },
   courseInfoContainer: {
     rowGap: theme.SIZE.SMALL,
-    width: '80%',
+    width: '75%',
   },
   courseInfoSubContainer: {
     flexDirection: 'row',
     columnGap: 5,
-  },
-  numberOfModuleText: {
-    fontSize: theme.SIZE.EXTRA_SMALL,
-    fontWeight: '500',
-    lineHeight: 14,
-    color: theme.COLOR.LIGHT_GRAY,
-    borderRightWidth: 1,
-    borderColor: theme.COLOR.LIGHT_GRAY,
-    paddingEnd: 5,
   },
   courseTotalDuration: {
     fontSize: theme.SIZE.EXTRA_SMALL,
@@ -40,7 +31,18 @@ const styles = StyleSheet.create({
     lineHeight: 14,
     color: theme.COLOR.LIGHT_GRAY,
   },
-  progressContainer: {},
+  progressContainer: {
+    borderWidth: 2,
+    borderColor: theme.COLOR.PRIMARY,
+    width: 45,
+    height: 45,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  progressText: {
+    color: theme.COLOR.LIGHT_GRAY,
+  },
 });
 
 export default styles;

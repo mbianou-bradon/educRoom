@@ -14,7 +14,7 @@ export default function ProgressCard() {
       </View>
       {/* Course Progress */}
       <View style={styles.progressContainer}>
-        <Text>90%</Text>
+        <Text style={styles.progressText}>90%</Text>
       </View>
     </View>
   );

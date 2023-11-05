@@ -12,7 +12,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header />
       <View style={styles.searchHeaderMainContainer}>
         {/* Search Field */}
@@ -46,6 +46,7 @@ export default function HomeScreen() {
           <ProgressCard />
         </ScrollView>
       </View>
+
       <View style={styles.section}>
         <View style={styles.ongoingCourseContainerHeader}>
           <Text style={styles.ContinueLearningText}>Featured Courses</Text>
@@ -65,6 +66,6 @@ export default function HomeScreen() {
           <CourseCard />
         </ScrollView>
       </View>
-    </View>
+    </ScrollView>
   );
 }
