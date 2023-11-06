@@ -74,7 +74,8 @@ This is one way to run your app — you can also run it directly from within And
 Now that you have successfully run the app, you can modify it inorder to fetch from your own APO.
 
 1. Open `utils` folder. 
-2. Open `API.tsx` in your text editor of choice and edit baseURL of the API.
+2. Open `config` folder.
+2. Open `axios.ts` in your text editor of choice and edit baseURL of the API.
 3. Upon changing the API base URL, make sure the data structure and endpoints are the same as the open use in this application.
 
 ## Congratulations! :tada:
