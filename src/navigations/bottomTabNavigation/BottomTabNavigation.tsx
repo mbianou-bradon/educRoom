@@ -1,5 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeScreen, Profile} from '../../screens';
+import theme from '../../utils/theme/theme';
+import {store} from '../../redux/store/store';
 
 export type TabStackParams = {
   Home: undefined;
@@ -7,15 +9,22 @@ export type TabStackParams = {
 };
 
 export default function MyTabs() {
+  const isAuth = store.getState().userReducer.isAuth;
   const Tab = createBottomTabNavigator<TabStackParams>();
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
+        tabBarIconStyle: {display: 'none'},
+        tabBarStyle: {
+          height: 50,
+          paddingBottom: 15,
+          backgroundColor: theme.COLOR.DARK,
+        },
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={Profile} />
+      {isAuth && <Tab.Screen name="Profile" component={Profile} />}
     </Tab.Navigator>
   );
 }

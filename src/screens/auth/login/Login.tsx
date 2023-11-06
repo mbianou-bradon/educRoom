@@ -11,27 +11,55 @@ import {
 import {Button, LoadingScreen, Logo} from '../../../components';
 import {styles} from './login.screen.styles';
 import theme from '../../../utils/theme/theme';
+import client from '../../../utils/config/axios';
+import {useAppDispatch} from '../../../redux/store/hooks';
+import {createUserSlice, currentUser} from '../../../redux/features/userSlice';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {NativeStackParams} from '../../../navigations/NativeNavigation/NativeNavigation';
+import handleError from '../../../utils/functions/handleError';
 
 export default function Login() {
   /** State Management */
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const dispatch = useAppDispatch();
+
+  /** Navigation */
+  const navigation =
+    useNavigation<NativeStackNavigationProp<NativeStackParams>>();
+
+  /** handleLoginWithEmailAndPassword */
+  function handleLoginWithEmailAndPassword() {
+    setIsLoading(true);
+    client
+      .get(`/users?${email}&${password}`)
+      .then(response => {
+        setIsLoading(false);
+        const user = response.data;
+        dispatch(createUserSlice.actions.currentUser(user));
+        navigation.canGoBack();
+      })
+      .catch(error => {
+        setIsLoading(false);
+        handleError('Error', error.message);
+      });
+  }
 
   /** Login with Facebook */
   const handleFacebookAuthBtn = () => {
-    Alert.alert(
+    handleError(
       'FACEBOOK AUTHENTICATION',
       'Oops! Something went wrong, you might consider using Email and Password instead.',
-      [{text: 'OK!'}],
     );
   };
 
   /** Login with Google */
   const handleGoogleAuthBtn = () => {
-    Alert.alert(
+    handleError(
       'GOOGLE AUTHENTICATION',
       'Oops! Something went wrong, you might consider using Email and Password instead.',
-      [{text: 'OK!'}],
     );
   };
 
@@ -58,11 +86,14 @@ export default function Login() {
                   placeholder="password"
                   style={styles.inputField}
                   placeholderTextColor={styles.placeholderTextColor.color}
-                  onChangeText={value => setEmail(value)}
+                  onChangeText={value => setPassword(value)}
                 />
               </View>
 
-              <Button btnText={'Login'} />
+              <Button
+                btnText={'Login'}
+                onPress={() => handleLoginWithEmailAndPassword()}
+              />
             </View>
 
             <View
@@ -88,15 +119,11 @@ export default function Login() {
               <TouchableOpacity
                 style={styles.fastLoginOption}
                 onPress={handleGoogleAuthBtn}>
-                {/* <Image
-                  source={require('../../../../assets/icons/google.png')}
-                /> */}
                 <Text style={styles.loginOptionsText}>G</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.fastLoginOption}
                 onPress={handleFacebookAuthBtn}>
-                {/* <Image source={require('../../assets/icons/facebook.png')} /> */}
                 <Text style={styles.loginOptionsText}>F</Text>
               </TouchableOpacity>
             </View>
