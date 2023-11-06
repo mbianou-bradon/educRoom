@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Pressable, Text, TouchableOpacity, View} from 'react-native';
 import styles from './button.styles';
 
 interface Props {
@@ -9,10 +9,10 @@ interface Props {
 
 export default function Button({btnText, onPress}: Props) {
   return (
-    <View style={styles.callToActionInnerContainer}>
-      <TouchableOpacity style={styles.enrollContainer}>
+    <Pressable style={styles.callToActionInnerContainer}>
+      <TouchableOpacity style={styles.enrollContainer} onPress={onPress}>
         <Text style={styles.enrollText}>{btnText}</Text>
       </TouchableOpacity>
-    </View>
+    </Pressable>
   );
 }

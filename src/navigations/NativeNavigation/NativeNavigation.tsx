@@ -4,12 +4,14 @@ import {CourseDetailPage, MyCourses, Splash} from '../../screens';
 import MyTabs, {
   TabStackParams,
 } from '../bottomTabNavigation/BottomTabNavigation';
+import Login from '../../screens/auth/login/Login';
 
 export type NativeStackParams = {
   Splash: undefined;
   Tab: TabStackParams;
   MyCourses: undefined;
   CourseDetail: undefined;
+  Login: undefined;
 };
 
 export default function NativeNavigation() {
@@ -25,6 +27,7 @@ export default function NativeNavigation() {
       <NativeStack.Screen name="Tab" component={MyTabs} />
       <NativeStack.Screen name="MyCourses" component={MyCourses} />
       <NativeStack.Screen name="CourseDetail" component={CourseDetailPage} />
+      <NativeStack.Screen name="Login" component={Login} />
     </NativeStack.Navigator>
   );
 }

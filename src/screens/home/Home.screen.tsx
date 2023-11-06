@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Pressable, ScrollView, Text, TextInput, View} from 'react-native';
 import {
   CourseCard,
@@ -8,11 +8,16 @@ import {
 } from '../../components';
 import styles from './home.screen.styles';
 import {CourseModel} from '../../utils/types/courseModel.type';
+import client from '../../utils/config/axios';
+import {store} from '../../redux/store/store';
+import handleError from '../../utils/functions/handleError';
 
 export default function HomeScreen() {
   /** State management */
+  const userInfo = store.getState().userReducer.currentUser;
   const [search, setSearch] = useState<string>('');
   const [featuredCourses, setFeaturedCourses] = useState<CourseModel[]>();
+  const [myCourses, setMyCourses] = useState<CourseModel[]>();
 
   /**Display States */
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -20,6 +25,27 @@ export default function HomeScreen() {
   const handleSearch = () => {
     setSearch(search);
   };
+
+  useEffect(() => {
+    client
+      .get(`/mycourses?${userInfo.id}`)
+      .then(response => {
+        const data = response.data;
+        setMyCourses(data);
+      })
+      .catch(error => {
+        handleError('Error', `${error.message}`);
+      });
+    client
+      .get(`/courses`)
+      .then(response => {
+        const data = response.data;
+        setFeaturedCourses(data);
+      })
+      .catch(error => {
+        handleError('Error', `${error.message}`);
+      });
+  }, []);
 
   return (
     <>
