@@ -27,20 +27,23 @@ export default function HomeScreen() {
   };
 
   useEffect(() => {
-    client
-      .get(`/mycourses?${userInfo.id}`)
-      .then(response => {
-        const data = response.data;
-        setMyCourses(data);
-      })
-      .catch(error => {
-        handleError('Error', `${error.message}`);
-      });
+    // client
+    //   .get(`/mycourses?${userInfo.id}`)
+    //   .then(response => {
+    //     const data = response.data;
+    //     setMyCourses(data);
+    //   })
+    //   .catch(error => {
+    //     handleError('Error', `${error.message}`);
+    //   });
+    setIsLoading(true);
     client
       .get(`/courses`)
       .then(response => {
-        const data = response.data;
+        const data = response.data.course;
+        console.log(data);
         setFeaturedCourses(data);
+        setIsLoading(false);
       })
       .catch(error => {
         handleError('Error', `${error.message}`);

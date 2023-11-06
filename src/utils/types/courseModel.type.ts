@@ -1,7 +1,7 @@
 import {type UserModel} from './userModel.type';
 
 export interface CourseModel {
-  id: string;
+  _id: string;
   name: string;
   instructor: string;
   description: string;

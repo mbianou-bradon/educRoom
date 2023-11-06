@@ -10,7 +10,7 @@ export type NativeStackParams = {
   Splash: undefined;
   Tab: TabStackParams;
   MyCourses: undefined;
-  CourseDetail: undefined;
+  CourseDetail: {id: string};
   Login: undefined;
 };
 

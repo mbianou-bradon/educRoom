@@ -2,7 +2,13 @@ import React, {useState} from 'react';
 import {Pressable, Text, View} from 'react-native';
 import styles from './accordion.styles';
 
-export default function Accordion() {
+interface Props {
+  week: string;
+  topic: string;
+  content: string;
+}
+
+export default function Accordion({week, topic, content}: Props) {
   /** State management */
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -12,7 +18,9 @@ export default function Accordion() {
         style={styles.subContainer}
         onPress={() => setIsOpen(prevState => !prevState)}>
         <View>
-          <Text style={styles.headingText}>Week 1: Accordion</Text>
+          <Text style={styles.headingText}>
+            Week {week}: {topic}
+          </Text>
           <View>
             <Text style={styles.numberOfLessonsText}>5 Lessons</Text>
           </View>
@@ -31,10 +39,7 @@ export default function Accordion() {
       {/* Content */}
       {isOpen && (
         <View style={styles.contentDetailContainer}>
-          <Text style={styles.contentDetailText}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem,
-            facere.
-          </Text>
+          <Text style={styles.contentDetailText}>{content}</Text>
         </View>
       )}
     </View>

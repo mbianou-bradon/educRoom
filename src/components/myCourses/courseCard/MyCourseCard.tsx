@@ -5,6 +5,7 @@ import {Status} from '../..';
 
 export default function MyCourseCard() {
   const title = 'React Native | All basics step-by-step';
+  const status = 'in progress';
 
   return (
     <TouchableOpacity style={styles.container}>
@@ -17,7 +18,7 @@ export default function MyCourseCard() {
         </Text>
         <Text style={styles.courseTotalDuration}>8 weeks</Text>
       </View>
-      <Status />
+      <Status text={status} />
     </TouchableOpacity>
   );
 }

@@ -9,7 +9,7 @@ interface userState {
 }
 
 const initialState: userState = {
-  isAuth: false,
+  isAuth: true,
   currentUser: {
     name: '',
     oAuthToken: '',
@@ -32,15 +32,8 @@ export const createUserSlice = createSlice({
     currentUser: (state, action) => {
       state.currentUser = action.payload;
     },
-    createNewUser: (
-      state,
-      action: PayloadAction<{key: keyof UserModel; value: any}>,
-    ) => {
-      const {key, value} = action.payload;
-      state.newUser = {...state.newUser, [key]: value};
-    },
   },
 });
 
-export const {globalAuth, currentUser, createNewUser} = createUserSlice.actions;
+export const {globalAuth, currentUser} = createUserSlice.actions;
 export default createUserSlice.reducer;

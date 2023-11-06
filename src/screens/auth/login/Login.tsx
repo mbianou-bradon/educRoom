@@ -13,7 +13,7 @@ import {styles} from './login.screen.styles';
 import theme from '../../../utils/theme/theme';
 import client from '../../../utils/config/axios';
 import {useAppDispatch} from '../../../redux/store/hooks';
-import {createUserSlice, currentUser} from '../../../redux/features/userSlice';
+import {currentUser, globalAuth} from '../../../redux/features/userSlice';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {NativeStackParams} from '../../../navigations/NativeNavigation/NativeNavigation';
@@ -34,12 +34,14 @@ export default function Login() {
   function handleLoginWithEmailAndPassword() {
     setIsLoading(true);
     client
-      .get(`/users?${email}&${password}`)
+      .post('/auth/login', {email, password})
       .then(response => {
         setIsLoading(false);
-        const user = response.data;
-        dispatch(createUserSlice.actions.currentUser(user));
-        navigation.canGoBack();
+        const user = response.data.user;
+        console.log(user);
+        dispatch(globalAuth(true));
+        dispatch(currentUser(user));
+        navigation.goBack();
       })
       .catch(error => {
         setIsLoading(false);
